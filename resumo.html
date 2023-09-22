@@ -45,31 +45,36 @@
         </form>
 
 
-        <script>
-            function filtrarOpcoes() {
-                var input, filter, select, option, i;
-                input = document.getElementById("pesquisa");
-                filter = input.value.toLowerCase();
-                select = document.querySelector(".custom-select select");
-                optionsContainer = document.querySelector(".custom-options");
-                optionsContainer.innerHTML = "";
+<script>
+    function filtrarOpcoes() {
+        var input, filter, select, option, i;
+        input = document.getElementById("pesquisa");
+        filter = input.value.toLowerCase();
+        select = document.getElementById("opcoes"); // Corrigi o método de seleção
+        optionsContainer = document.querySelector(".custom-options");
+        optionsContainer.innerHTML = "";
 
-                for (i = 0; i < select.options.length; i++) {
-                    option = select.options[i];
-                    if (option.text.toLowerCase().indexOf(filter) > -1) {
-                        var customOption = document.createElement("div");
-                        customOption.className = "custom-option";
-                        customOption.textContent = option.text;
-                        customOption.addEventListener("click", function() {
-                            select.value = option.value;
-                            input.value = option.text;
-                            optionsContainer.innerHTML = "";
-                        });
-                        optionsContainer.appendChild(customOption);
-                    }
-                }
+        for (i = 0; i < select.options.length; i++) {
+            option = select.options[i];
+            if (option.text.toLowerCase().indexOf(filter) > -1) {
+                var customOption = document.createElement("div");
+                customOption.className = "custom-option";
+                customOption.textContent = option.text;
+                customOption.addEventListener("click", function() {
+                    select.value = option.value;
+                    input.value = option.text;
+                    optionsContainer.innerHTML = "";
+                });
+                optionsContainer.appendChild(customOption);
             }
-        </script>
+            else {
+                // Ocultar opções que não correspondem à pesquisa
+                option.style.display = "none";
+            }
+        }
+    }
+</script>
+
 
         
     </main>
