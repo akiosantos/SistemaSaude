@@ -22,44 +22,46 @@
 
         <form>
             <label for="opcoes">Opções:</label>
-            <input type="text" id="pesquisa" placeholder="Pesquisar...">
                 <select id="opcoes" name="opcoes">
                     <option value="opcao1">Cardiologista</option>
                     <option value="opcao2">Alergista</option>
                     <option value="opcao3">Ginecologista</option>
                     <option value="opcao4">Pneumologista</option>
-                    <option value="opcao4">Urologista</option>
-                    <option value="opcao4">Oftalmologista</option>
-                    <option value="opcao4">Obstetra</option>
-                    <option value="opcao4">Otorrino</option>
-                    <option value="opcao4">Clínico Geral</option>
-                    <option value="opcao4">Pediatra</option>
-                    <option value="opcao4">Dermatologista</option>
-                    <option value="opcao4">Oncologista</option>
-                    <option value="opcao4">Neurologista</option> 
-                    <option value="opcao4">Hospital Pronto Socorro</option> 
-                    <option value="opcao4">Ortopedista</option> 
-                    <option value="opcao4">Psiquiatra</option>
+                    <option value="opcao5">Urologista</option>
+                    <option value="opcao6">Oftalmologista</option>
+                    <option value="opcao7">Obstetra</option>
+                    <option value="opcao8">Otorrino</option>
+                    <option value="opcao9">Clínico Geral</option>
+                    <option value="opcao10">Pediatra</option>
+                    <option value="opcao11">Dermatologista</option>
+                    <option value="opcao12">Oncologista</option>
+                    <option value="opcao13">Neurologista</option> 
+                    <option value="opcao14">Hospital Pronto Socorro</option> 
+                    <option value="opcao15">Ortopedista</option> 
+                    <option value="opcao16">Psiquiatra</option>
                 </select>
+            <br>
+    <label for="pesquisa">Pesquisar:</label>
+    <input type="text" id="pesquisa" placeholder="Digite para pesquisar..." onkeyup="filtrarOpcoes()">
         </form>
 
 
         <script>
-    document.getElementById("pesquisa").addEventListener("input", function () {
-        var filtro = this.value.toLowerCase();
-        var select = document.getElementById("opcoes");
-        var options = select.getElementsByTagName("option");
-        
-        for (var i = 0; i < options.length; i++) {
-            var option = options[i];
-            var textoOpcao = option.textContent.toLowerCase();
-            if (textoOpcao.includes(filtro)) {
+    function filtrarOpcoes() {
+        var input, filter, select, option, i;
+        input = document.getElementById("pesquisa");
+        filter = input.value.toLowerCase();
+        select = document.getElementById("opcoes");
+
+        for (i = 0; i < select.options.length; i++) {
+            option = select.options[i];
+            if (option.text.toLowerCase().indexOf(filter) > -1) {
                 option.style.display = "";
             } else {
                 option.style.display = "none";
             }
         }
-    });
+    }
 </script>
 
         
