@@ -22,6 +22,7 @@
 
         <form>
             <label for="opcoes">Opções:</label>
+            <input type="text" id="pesquisa" placeholder="Pesquisar...">
                 <select id="opcoes" name="opcoes">
                     <option value="opcao1">Cardiologista</option>
                     <option value="opcao2">Alergista</option>
@@ -41,6 +42,25 @@
                     <option value="opcao4">Psiquiatra</option>
                 </select>
         </form>
+
+
+        <script>
+    document.getElementById("pesquisa").addEventListener("input", function () {
+        var filtro = this.value.toLowerCase();
+        var select = document.getElementById("opcoes");
+        var options = select.getElementsByTagName("option");
+        
+        for (var i = 0; i < options.length; i++) {
+            var option = options[i];
+            var textoOpcao = option.textContent.toLowerCase();
+            if (textoOpcao.includes(filtro)) {
+                option.style.display = "";
+            } else {
+                option.style.display = "none";
+            }
+        }
+    });
+</script>
 
         
     </main>
